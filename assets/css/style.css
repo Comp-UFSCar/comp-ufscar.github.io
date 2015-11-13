@@ -1,0 +1,31 @@
+.bg-header {
+    background-color: #aa0033;
+    color: #ffaaaa;
+    padding-top: 7em;
+    padding-bottom: 7em;
+    margin-bottom: 2em;
+}
+
+
+.bg-footer {
+    color:#555;
+    margin-top:2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.content-section {
+    margin-bottom: 2em;
+}
+
+.content-section h2, h3 {
+    margin-top: 2em;
+}
+
+hr {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    height:0;
+    border-color: #eee;
+    border-width: 5px;
+}
