@@ -18,8 +18,8 @@
             <div class="collapse navbar-toggleable-xs pull-right" id="bd-main-nav">
                 <nav class="nav navbar-nav">
 
-                    <a class="nav-item nav-link active" href="#intro">Introduction</a>
-                    <a class="nav-item nav-link" href="#guidelines">Guidelines</a>
+                    <a class="nav-item nav-link active" href="#tr">Introduction</a>
+                    <a class="nav-item nav-link" href="#gd">Guidelines</a>
                 </nav>
             </div>
         </div>
@@ -34,8 +34,8 @@
             </p>
         </div>
     </div>
-    <section name="intro" id="intro" class="container content-section">
-        <h2><a href="#intro">Introduction</a></h2>
+    <section name="tr" id="tr" class="container content-section">
+        <h2><a href="#tr">Introduction</a></h2>
         <hr>
         <p>
             This website contains information about the comp-ufscar organization at github.
@@ -46,25 +46,61 @@
         </p>
     </section>
 
-    <section name="guidelines" id="guidelines" class="container content-section">
-        <h2><a href="#guidelines">Guidelines</a></h2>
+    <section name="gd" id="gd" class="container content-section">
+        <h2><a href="#gd">Guidelines</a></h2>
         <hr>
         <p>
             There are many students at the Computing dept. and the number of repositories can grow awfully fast. Everyone's welcome to contribute to
             the organization, but we ask you to <strong>follow</strong> these guidelines.
         </p>
 
-        <h3>I want to share a project</h3>
-        <p>
-            Projects are kept in repositories that reference a <strong>class</strong>, without distinguishing year or term.
-        </p>
-        <h3>I would like to share my classes' notes</h3>
-        <p>
-            The repository <a href="https://github.com/Comp-UFSCar/comp-ufscar-classes">comp-ufscar-classes</a> keeps all files that aren't directly
-            related to code or technical production. It's organized by <code>classes > professor > year.term > content</code> and future
-            contributions should follow this structure. Please refer to the comp-ufscar-classes'
-            <a href="https://github.com/Comp-UFSCar/comp-ufscar-classes/blob/master/README.md">README.md</a> file for more information.
-        </p>
+        <div name="gd-share-project" id="gd-share-project">
+            <div class="content-section">
+                <h3><a href="#gd-share-project">I want to share a project</a></h3>
+                <p>
+                    Projects are kept in repositories that reference a <strong>class</strong>, without distinguishing year or term.
+                </p>
+            </div>
+
+            <h4>Merging your project repository to a class repository without loosing commit logs</h4>
+            <p>In case you were versioning your project on Git and don't want to loose the modification logs.</p>
+            <p>
+                First, conform your project to our standard:
+            </p>
+            <pre class="code code-shell">
+    $ cd /path/to/your/repository      # Navigate to your repository.
+    $ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
+    $ mv ./* projects/{project_name}/  # Move everything to the created folder.
+    $ git add .
+    $ git commit -m "Conform project for Comp-UFSCar merging."
+    $ git push --all</pre>
+            <p class="alert alert-warning">
+                <strong>Caution!</strong> Please make sure that the <code>{project_name}</code> choosen isn't already being used by other project in the
+                given class' repository.
+            </p>
+            <p>
+                Now merge your project and the class repository:
+            </p>
+            <pre class="code code-shell">
+    $ cd /path/to/comp-ufscar/class/repository
+    $ git remote add {repository} https://github.com/{username}/{repository}.git
+    $ git pull --all
+    $ git remote remove {repository}
+    $ git push --all</pre>
+            <p>
+                The sequence of steps above is recommended as it will merge the list of commits while preserving paths. Other solutions might be found at <a href="http://stackoverflow.com/questions/1425892">How do you merge two git repository? (Stack Overflow)</a>
+            </p>
+        </div>
+
+        <div name="gd-class-notes" id="gd-class-notes">
+            <h3><a href="#gd-class-notes">I would like to share my classes' notes</a></h3>
+            <p>
+                The repository <a href="https://github.com/Comp-UFSCar/comp-ufscar-classes">comp-ufscar-classes</a> keeps all files that aren't directly
+                related to code or technical production. It's organized by <code>classes > professor > year.term > content</code> and future
+                contributions should follow this structure. Please refer to the comp-ufscar-classes'
+                <a href="https://github.com/Comp-UFSCar/comp-ufscar-classes/blob/master/README.md">README.md</a> file for more information.
+            </p>
+        </div>
     </section>
 
     <footer class="bg-footer">

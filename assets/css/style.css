@@ -29,3 +29,12 @@ hr {
     border-color: #eee;
     border-width: 5px;
 }
+
+.code {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+}
+
+.code-shell {
+}
