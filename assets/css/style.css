@@ -1,4 +1,4 @@
-.bg-header {
+.hero {
     background-color: #aa0033;
     color: #ffaaaa;
     padding-top: 7em;
@@ -6,11 +6,16 @@
     margin-bottom: 2em;
 }
 
+.hero .logo {
+    max-width: 200px;
+    margin-right:2em;
+}
+
 
 .bg-footer {
     color:#555;
     margin-top:2em;
-    padding-top: 2em;
+    padding-top: 4em;
     padding-bottom: 2em;
 }
 
@@ -37,4 +42,9 @@ hr {
 }
 
 .code-shell {
+}
+
+.sequence {
+    margin-left: 1em;
+    font-style: italic;
 }

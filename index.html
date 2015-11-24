@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="compufscar">
 <head>
     <meta charset="utf-8">
     <title>Comp UFSCar</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <script src="node_modules/angular/angular.min.js" charset="utf-8"></script>
+    <script src="app/app.js" charset="utf-8"></script>
+    <script src="app/authors/controller.js" charset="utf-8"></script>
 </head>
 <body>
     <header class="navbar navbar-light navbar-static-top bd-navbar" role="banner">
@@ -19,18 +23,22 @@
                 <nav class="nav navbar-nav">
 
                     <a class="nav-item nav-link active" href="#tr">Introduction</a>
+                    <a class="nav-item nav-link" href="#authors">Authors</a>
                     <a class="nav-item nav-link" href="#gd">Guidelines</a>
                 </nav>
             </div>
         </div>
     </header>
-    <div class="bg-header">
+    <div class="hero">
         <div class="container">
+            <figure>
+                <img src="assets/img/logo.png" alt="Comp-UFSCar logo" class="logo pull-left" />
+            </figure>
             <h1>
                 Computing UFSCar
             </h1>
             <p class="lead">
-                Collaborative projects and classes tasks repository.
+                Collaborative repositories for projects and classes' tasks.
             </p>
         </div>
     </div>
@@ -38,11 +46,22 @@
         <h2><a href="#tr">Introduction</a></h2>
         <hr>
         <p>
-            This website contains information about the comp-ufscar organization at github.
+            This website contains information about the <a href="https://github.com/comp-ufscar">comp-ufscar</a> organization at github.
         </p>
         <p>
             <strong>Important:</strong> comp-ufscar was created by students and it is not associated or maintained by any employee of the Computing department
             at Federal University of Sao Carlos.
+        </p>
+    </section>
+
+    <section name="authors" id="authors" class="container content-section" ng-controller="AuthorsController as authorsList" ng-init="authorsList.load()">
+        <h2><a href="#authors">Authors</a></h2>
+        <hr>
+        <p>
+            The following people have somehow contributed for this project: <span ng-hide="authorsList.authors">loading...</span>
+        </p>
+        <p class="sequence sequence-authors">
+            <span ng-repeat="author in authorsList.authors">{{ author.name }} (<a href="{{ author.url }}">{{ author.username }})</a>; </span>
         </p>
     </section>
 
