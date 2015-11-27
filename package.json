@@ -1,0 +1,32 @@
+{
+  "name": "comp-ufscar.github.io",
+  "version": "1.0.0",
+  "description": "Comp-UFSCar organization website.",
+  "main": "index.html",
+  "dependencies": {
+    "angular-resource": "^1.4.8",
+    "angular2": "^2.0.0-alpha.46",
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8"
+  },
+  "devDependencies": {
+    "angular", "angular-route", "angular-resource"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Comp-UFSCar/comp-ufscar.github.io.git"
+  },
+  "keywords": [
+    "Computing",
+    "UFSCar"
+  ],
+  "author": "Comp-UFSCar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Comp-UFSCar/comp-ufscar.github.io/issues"
+  },
+  "homepage": "https://github.com/Comp-UFSCar/comp-ufscar.github.io#readme"
+}
