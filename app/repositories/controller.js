@@ -15,8 +15,4 @@ function RepositoriesController($resource, config) {
 
         vm.repositories = Repositories.query();
     }
-
-    setTimeout(function() {
-        console.log(vm.repositories[0]);
-    }, 2000);
 }
