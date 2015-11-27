@@ -5,10 +5,6 @@
     <title>Comp UFSCar</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
-    <script src="node_modules/angular/angular.min.js" charset="utf-8"></script>
-    <script src="app/app.js" charset="utf-8"></script>
-    <script src="app/authors/controller.js" charset="utf-8"></script>
 </head>
 <body>
     <header class="navbar navbar-light navbar-static-top bd-navbar" role="banner">
@@ -63,6 +59,44 @@
         <p class="sequence sequence-authors">
             <span ng-repeat="author in authorsList.authors">{{ author.name }} (<a href="{{ author.url }}">{{ author.username }})</a>; </span>
         </p>
+    </section>
+
+    <section name="repos" id="repos" class="container content-section" ng-controller="RepositoriesController as repositoriesList" ng-init="repositoriesList.load()">
+        <h2><a href="#repos">Repositories</a></h2>
+        <hr>
+
+        <input type="text" placeholder="Search in repositories..." ng-model="repositorysearch" class="form-control"><br />
+
+        <div class="list-group">
+            <a ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch"
+                href="{{repository.html_url}}" target="_new"
+                class="list-group-item">
+                <span class="pull-right">
+                    <span ng-show="repository.forks_count" title="{{ repository.forks_count }} forks." class="label label-default label-pill">
+                    {{repository.forks_count}}
+                    </span>
+
+                    <span ng-show="repository.watchers_count" title="{{ repository.watchers_count }} watchers." class="label label-primary label-pill">
+                    {{repository.watchers_count}}
+                    </span>
+
+                    <span ng-show="repository.stargazers_count" title="{{ repository.stargazers_count }} stargazers." class="label label-warning label-pill">
+                    {{repository.stargazers_count}}
+                    </span>
+                </span>
+
+                <h4 class="list-group-item-heading">
+                    {{ repository.name }}
+                    <small>#{{ repository.id }}</small>
+                </h4>
+                <p class="list-group-item-text">
+                    {{ repository.description }}
+                </p>
+                <small>
+                    Updated at: {{ repository.updated_at }}
+                </small>
+            </a>
+        </div>
     </section>
 
     <section name="gd" id="gd" class="container content-section">
@@ -128,5 +162,13 @@
             <a href="https://github.com/comp-ufscar">GitHub org</a><br>
         </div>
     </footer>
+
+
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="node_modules/angular-resource/angular-resource.js" charset="utf-8"></script>
+    <script src="node_modules/angular-route/angular-route.js" charset="utf-8"></script>
+    <script src="app/app.js" charset="utf-8"></script>
+    <script src="app/authors/controller.js" charset="utf-8"></script>
+    <script src="app/repositories/controller.js" charset="utf-8"></script>
 </body>
 </html>
