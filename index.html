@@ -20,6 +20,7 @@
 
                     <a class="nav-item nav-link active" href="#tr">Introduction</a>
                     <a class="nav-item nav-link" href="#authors">Authors</a>
+                    <a class="nav-item nav-link" href="#repos">Repositories</a>
                     <a class="nav-item nav-link" href="#gd">Guidelines</a>
                 </nav>
             </div>
@@ -68,34 +69,40 @@
         <input type="text" placeholder="Search in repositories..." ng-model="repositorysearch" class="form-control"><br />
 
         <div class="list-group">
-            <a ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch"
-                href="{{repository.html_url}}" target="_new"
-                class="list-group-item">
+            <div ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch" class="list-group-item">
                 <span class="pull-right">
-                    <span ng-show="repository.forks_count" title="{{ repository.forks_count }} forks." class="label label-default label-pill">
+                    <span ng-show="repository.forks_count" title="{{ repository.forks_count }} forks." class="label label-primary label-pill">
                     {{repository.forks_count}}
                     </span>
 
-                    <span ng-show="repository.watchers_count" title="{{ repository.watchers_count }} watchers." class="label label-primary label-pill">
+                    <span ng-show="repository.watchers_count" title="{{ repository.watchers_count }} watchers." class="label label-info label-pill">
                     {{repository.watchers_count}}
                     </span>
 
                     <span ng-show="repository.stargazers_count" title="{{ repository.stargazers_count }} stargazers." class="label label-warning label-pill">
                     {{repository.stargazers_count}}
                     </span>
-                </span>
 
+                    <span title="{{ repository.language }} is the predominant language." class="label label-default">
+                    {{repository.language}}
+                    </span>
+                </span>
                 <h4 class="list-group-item-heading">
+                    <a href="{{repository.html_url}}" target="_new">
                     {{ repository.name }}
+                    </a>
                     <small>#{{ repository.id }}</small>
                 </h4>
                 <p class="list-group-item-text">
                     {{ repository.description }}
                 </p>
                 <small>
-                    Updated at: {{ repository.updated_at }}
+                    Last pushed at: {{ repository.pushed_at }}
                 </small>
-            </a>
+
+
+            </div>
+
         </div>
     </section>
 

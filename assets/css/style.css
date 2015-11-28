@@ -48,3 +48,19 @@ hr {
     margin-left: 1em;
     font-style: italic;
 }
+
+a {
+    color: crimson;
+}
+
+a:hover, a:visited, a:active {
+    color: crimson;
+}
+
+.form-control {
+    border: 3px solid #eee;
+}
+
+.form-control:focus {
+    border-color: #eee;
+}
