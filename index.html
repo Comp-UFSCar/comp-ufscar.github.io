@@ -22,7 +22,6 @@
                 </p>
                 <ul>
                     <a href="#tr"><li>Introduction</li></a>
-                    <a href="#authors"><li>Authors</li></a>
                     <a href="#repos"><li>Repositories</li></a>
                     <a href="#gd"><li>Guidelines</li></a>
                 </ul>
@@ -40,18 +39,23 @@
                     <hr>
                     <p>
                         This website contains information about the <a href="https://github.com/comp-ufscar">comp-ufscar</a>
-                        organization at github.
+                        organization at github and its <a href="#repos">repositories</a>.
+                        We appreciate you spending time at Comp-UFSCar. Please consider <a href="#contributing">contributing</a> to our repositories.
                     </p>
-                    <p ng-controller="AuthorsController as authorsList"
-                        ng-init="authorsList.load()">
-                        The following people have somehow contributed for this project:
-                        <span ng-hide="authorsList.authors">loading...</span>
-                        <span class="sequence sequence-authors">
-                            <span ng-repeat="author in authorsList.authors">{{ author.name }} (<a href="{{ author.url }}">
-                                {{ author.username}})</a>;
-                            </span>
-                        </span>
-                    </p>
+
+                    <div ng-controller="MembersController as membersList" ng-init="membersList.load()" class="list-members">
+                        <div ng-show="!membersList.members.$resolved">
+                            <i>...</i>
+                        </div>
+
+                        <div class="row">
+                            <div ng-repeat="member in membersList.members" class="col-md-1">
+                                <a href="{{ member.html_url}}" title="{{member.login}}'s GitHub page.">
+                                    <img src="{{member.avatar_url}}" class="img-responsive" alt="{{member.login}}'s GitHub page." />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <p class="alert alert-warning">
                         <strong>Important!</strong> <a href="https://github.com/comp-ufscar">comp-ufscar</a>
@@ -66,12 +70,9 @@
                     <h2><a href="#repos">Repositories</a></h2>
                     <hr>
 
-                    <input type="text" placeholder="Search in repositories..." ng-model="repositorysearch"
+                    <input type="text" placeholder="Search in repositories... (Name, author, )" ng-model="repositorysearch"
                     class="form-control"><br/>
-
-                    <div ng-show="!repositoriesList.repositories.$resolved">
-                        <h4><i>Loading...</i></h4>
-                    </div>
+                    <span ng-show="!repositoriesList.repositories.$resolved">...</span>
 
                     <div class="card-columns">
                         <div class="card" ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch">
@@ -117,60 +118,17 @@
                     <h2><a href="#gd">Guidelines</a></h2>
                     <hr>
                     <p>
-                        There are many students at the Computing dept. and the number of repositories can grow awfully
-                        fast.
-                        Everyone's
-                        welcome to contribute to
-                        the organization, but we ask you to <strong>follow</strong> these guidelines.
+                        There are many students at the Computing dept. and the number of repositories can grow awfully fast.
+                        Everyone's welcome to contribute to the organization, but we ask you to <strong>follow</strong> these guidelines.
                     </p>
 
                     <div name="gd-share-project" id="gd-share-project">
                         <div class="content-section">
                             <h3><a href="#gd-share-project">I want to share a project</a></h3>
-
                             <p>
-                                Projects are kept in repositories that reference a <strong>class</strong>, without
-                                distinguishing year
-                                or term.
+                                Projects are kept in repositories that reference a <strong>class</strong>, without distinguishing year or term.
                             </p>
                         </div>
-
-                        <h4>Merging your project repository to a class repository without loosing commit logs</h4>
-                        <p>In case you were versioning your project on Git and don't want to loose the modification logs.</p>
-                        <p>
-                            First, conform your project to our standard:
-                        </p>
-                        <pre class="code code-shell">
-                            $ cd /path/to/your/repository      # Navigate to your repository.
-                            $ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
-                            $ mv ./* projects/{project_name}/  # Move everything to the created folder.
-                            $ git add .
-                            $ git commit -m "Conform project for Comp-UFSCar merging."
-                            $ git push --all</pre>
-                        <p class="alert alert-warning">
-                            <strong>Caution!</strong> Please make sure that the <code>{project_name}</code> choosen
-                            isn't
-                            already being
-                            used by other project in the
-                            given class' repository.
-                        </p>
-
-                        <p>
-                            Now merge your project and the class repository:
-                        </p>
-                        <pre class="code code-shell">
-                            $ cd /path/to/comp-ufscar/class/repository
-                            $ git remote add {repository} https://github.com/{username}/{repository}.git
-                            $ git pull --all
-                            $ git remote remove {repository}
-                            $ git push --all</pre>
-                        <p>
-                            The sequence of steps above is recommended as it will merge the list of commits while
-                            preserving
-                            paths.
-                            Other solutions might be found at <a href="http://stackoverflow.com/questions/1425892">
-                                How do you merge two git repository? (Stack Overflow)</a>
-                        </p>
                     </div>
 
                     <div name="gd-class-notes" id="gd-class-notes">
@@ -186,7 +144,49 @@
                             <a href="https://github.com/Comp-UFSCar/comp-ufscar-classes/blob/master/README.md">README.md</a>
                             file for more information.
                         </p>
-                        </div>
+                    </div>
+                </section>
+
+                <section name="contributing" id="contributing" class="content-section">
+                    <h2><a href="#contributing">Contributing</a></h2>
+                    <hr />
+
+                    <h4>Merging your project repository to a class repository without loosing commit logs</h4>
+                    <p>In case you were versioning your project on Git and don't want to loose the modification logs.</p>
+                    <p>
+                        First, conform your project to our standard:
+                    </p>
+                    <pre class="code code-shell">
+$ cd /path/to/your/repository      # Navigate to your repository.
+$ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
+$ mv ./* projects/{project_name}/  # Move everything to the created folder.
+$ git add .
+$ git commit -m "Conform project for Comp-UFSCar merging."
+$ git push --all</pre>
+                    <p class="alert alert-warning">
+                        <strong>Caution!</strong> Please make sure that the <code>{project_name}</code> choosen
+                        isn't
+                        already being
+                        used by other project in the
+                        given class' repository.
+                    </p>
+
+                    <p>
+                        Now merge your project and the class repository:
+                    </p>
+                    <pre class="code code-shell">
+$ cd /path/to/comp-ufscar/class/repository
+$ git remote add {repository} https://github.com/{username}/{repository}.git
+$ git pull --all
+$ git remote remove {repository}
+$ git push --all</pre>
+                    <p>
+                        The sequence of steps above is recommended as it will merge the list of commits while
+                        preserving
+                        paths.
+                        Other solutions might be found at <a href="http://stackoverflow.com/questions/1425892">
+                            How do you merge two git repository? (Stack Overflow)</a>
+                    </p>
                 </section>
             </div>
         </div>
@@ -196,7 +196,7 @@
     <script src="node_modules/angular-resource/angular-resource.js" charset="utf-8"></script>
     <script src="node_modules/angular-route/angular-route.js" charset="utf-8"></script>
     <script src="app/app.js" charset="utf-8"></script>
-    <script src="app/authors/controller.js" charset="utf-8"></script>
+    <script src="app/members/controller.js" charset="utf-8"></script>
     <script src="app/repositories/controller.js" charset="utf-8"></script>
 </body>
 </html>

@@ -75,7 +75,7 @@ body {
 }
 
 .logo {
-    width: 320px;
+    width: 131%;
     margin-right:2em;
 }
 
@@ -132,10 +132,6 @@ hr {
 .code-shell {
 }
 
-.sequence {
-    font-style: italic;
-}
-
 a {
     color: crimson;
 }
@@ -154,4 +150,9 @@ a:hover, a:visited, a:active {
 
 .form-control:focus {
     border-color: #eee;
+}
+
+.list-members {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
