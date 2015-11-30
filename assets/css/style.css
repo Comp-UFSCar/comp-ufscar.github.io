@@ -1,5 +1,14 @@
 body {
     overflow-x:hidden;
+    font-family: Arial, sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    font-size: 1.5em;
+    color:#555;
+}
+
+.alert {
+    font-size:16px;
 }
 
 #wrapper {
@@ -111,33 +120,47 @@ body {
     margin-bottom: 2em;
 }
 
-.content-section h2, h3 {
-    margin-top: 2em;
+.content-section h2 {
+    margin-top: 4em;
+    border-bottom: 1px solid #f0f0ff;
+    padding-bottom: .05em;
 }
 
-hr {
-    margin-top: 1em;
-    margin-bottom: 2em;
-    height:0;
-    border-color: #eee;
-    border-width: 5px;
+.content-section h3 {
+    margin-top:1em;
 }
 
 .code {
     background-color: #333;
     color: #fff;
     padding: 1em;
+    font-size: 14px;
 }
 
 .code-shell {
 }
 
-a {
+a, a:hover, a:visited, a:active {
     color: crimson;
 }
 
-a:hover, a:visited, a:active {
-    color: crimson;
+.hero-sidebar .nav-item {
+    background-color: #ad013c;
+    padding-left: .5em;
+    padding-right: .5em;
+    border-radius: 5px;
+}
+
+.hero-sidebar footer {
+    font-size: 14px;
+}
+
+.hero-sidebar a {
+    font-size: 16px;
+}
+
+.hero-sidebar .nav {
+    margin-bottom: 1em;
 }
 
 .hero-sidebar a {
@@ -155,4 +178,8 @@ a:hover, a:visited, a:active {
 .list-members {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.avatar-member {
+    max-width: 200px;
 }

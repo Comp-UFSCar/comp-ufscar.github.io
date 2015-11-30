@@ -20,42 +20,34 @@
                 <p class="lead">
                     Collaborative repositories for projects and classes' tasks.
                 </p>
-                <ul>
-                    <a href="#tr"><li>Introduction</li></a>
-                    <a href="#repos"><li>Repositories</li></a>
-                    <a href="#gd"><li>Guidelines</li></a>
+
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-item">
+                        <a href="#tr">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#repos">Repositories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gd">Guidelines</a>
+                    </li>
                 </ul>
-                <p>
+                <footer>
                     <a href="http://dc.ufscar.br" class="link-warning">DC UFScar</a> |
-                    <a href="https://github.com/comp-ufscar">GitHub org</a><br>
-                </p>
+                    <a href="https://github.com/comp-ufscar">GitHub org</a>
+                </footer>
             </div>
         </div>
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <section name="tr" id="tr" class="content-section">
-                    <h2><a href="#tr">Introduction</a></h2>
-                    <hr>
+                    <h1><a href="#tr">Computing UFSCar</a></h1>
                     <p>
                         This website contains information about the <a href="https://github.com/comp-ufscar">comp-ufscar</a>
                         organization at github and its <a href="#repos">repositories</a>.
                         We appreciate you spending time at Comp-UFSCar. Please consider <a href="#contributing">contributing</a> to our repositories.
                     </p>
-
-                    <div ng-controller="MembersController as membersList" ng-init="membersList.load()" class="list-members">
-                        <div ng-show="!membersList.members.$resolved">
-                            <i>...</i>
-                        </div>
-
-                        <div class="row">
-                            <div ng-repeat="member in membersList.members" class="col-md-1">
-                                <a href="{{ member.html_url}}" title="{{member.login}}'s GitHub page.">
-                                    <img src="{{member.avatar_url}}" class="img-responsive" alt="{{member.login}}'s GitHub page." />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
                     <p class="alert alert-warning">
                         <strong>Important!</strong> <a href="https://github.com/comp-ufscar">comp-ufscar</a>
@@ -68,9 +60,8 @@
                 <section name="repos" id="repos" class="content-section"
                         ng-controller="RepositoriesController as repositoriesList" ng-init="repositoriesList.load()">
                     <h2><a href="#repos">Repositories</a></h2>
-                    <hr>
-
-                    <input type="text" placeholder="Search in repositories... (Name, author, )" ng-model="repositorysearch"
+                    
+                    <input type="text" placeholder="Search in repositories (e.g., name, language)" ng-model="repositorysearch"
                     class="form-control"><br/>
                     <span ng-show="!repositoriesList.repositories.$resolved">...</span>
 
@@ -116,7 +107,6 @@
 
                 <section name="gd" id="gd" class="content-section">
                     <h2><a href="#gd">Guidelines</a></h2>
-                    <hr>
                     <p>
                         There are many students at the Computing dept. and the number of repositories can grow awfully fast.
                         Everyone's welcome to contribute to the organization, but we ask you to <strong>follow</strong> these guidelines.
@@ -149,7 +139,6 @@
 
                 <section name="contributing" id="contributing" class="content-section">
                     <h2><a href="#contributing">Contributing</a></h2>
-                    <hr />
 
                     <h4>Merging your project repository to a class repository without loosing commit logs</h4>
                     <p>
@@ -191,6 +180,25 @@ $ git push --all</pre>
                         Other solutions might be found at <a href="http://stackoverflow.com/questions/1425892">
                             How do you merge two git repository? (Stack Overflow)</a>
                     </p>
+                </section>
+
+                <section name="members" id="members">
+                    <h2><a href="#members">Members</a></h2>
+
+                    <div ng-controller="MembersController as membersList" ng-init="membersList.load()" class="list-members">
+                        <div ng-show="!membersList.members.$resolved">
+                            <i>...</i>
+                        </div>
+
+                        <div class="row">
+                            <div ng-repeat="member in membersList.members" class="col-sm-1 text-center">
+                                <a href="{{ member.html_url}}" title="{{member.login}}'s GitHub page.">
+                                    <img src="{{member.avatar_url}}" alt="{{member.login}}'s GitHub page."
+                                         class="img-responsive img-rounded" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
