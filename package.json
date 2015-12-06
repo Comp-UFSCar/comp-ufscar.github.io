@@ -9,9 +9,9 @@
     "angular": "^1.4.8",
     "angular-route": "^1.4.8"
   },
-  "devDependencies": {
+  "devDependencies": [
     "angular", "angular-route", "angular-resource"
-  },
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
