@@ -107,49 +107,46 @@
                     <i class="fa fa-cog fa-3x fa-spin" style="color: #ccc"></i>
                 </span>
 
-                <div class="card-columns">
-                    <div class="card"
-                         ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch">
-                        <div class="card-block">
-                            <h5 class="card-title">
-                                <a href="{{repository.html_url}}" target="_new">
-                                    {{ repository.name }}
-                                </a>
-                                <small>#{{ repository.id }}</small>
-                            </h5>
-                            <p class="card-text">
-                                {{ repository.description }}
-                            </p>
-                            <footer>
-                                <small class="text-muted">
-                                        <span class="pull-right">
-                                            <span ng-show="repository.forks_count"
-                                                  title="{{ repository.forks_count }} forks."
-                                                  class="label label-primary label-pill">
-                                                {{repository.forks_count}}
-                                            </span>
-                                            <span ng-show="repository.watchers_count"
-                                                  title="{{ repository.watchers_count }} watchers."
-                                                  class="label label-info label-pill">
-                                                {{repository.watchers_count}}
-                                            </span>
-                                            <span ng-show="repository.stargazers_count"
-                                                  title="{{ repository.stargazers_count }} stargazers."
-                                                  class="label label-warning label-pill">
-                                                {{repository.stargazers_count}}
-                                            </span>
-                                            <span title="{{ repository.language }} is the predominant language."
-                                                  class="label label-default">
-                                                {{repository.language}}
-                                            </span>
-                                        </span>
-
-                                    Last pushed at: {{ repository.pushed_at }}
-                                </small>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
+                <table class="table" ng-show="repositoriesList.repositories.$resolved">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last Pushed</th>
+                        <th>Stats</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="repository in repositoriesList.repositories | filter: repositorysearch">
+                        <td>
+                            <a href="{{repository.html_url}}" target="_blank">
+                                {{repository.name}}
+                            </a>
+                            <br/>
+                            <small>{{ repository.description }}</small>
+                        </td>
+                        <td>
+                            <small>{{repository.pushed_at.toLocaleDateString()}}</small>
+                        </td>
+                        <td>
+                            <span ng-show="repository.forks_count"
+                                  title="{{ repository.forks_count }} forks."
+                                  class="label label-primary label-pill">
+                                    {{repository.forks_count}}
+                        </span>
+                            <span ng-show="repository.watchers_count"
+                                  title="{{ repository.watchers_count }} watchers."
+                                  class="label label-info label-pill">
+                                {{repository.watchers_count}}
+                            </span>
+                            <span ng-show="repository.stargazers_count"
+                                  title="{{ repository.stargazers_count }} stargazers."
+                                  class="label label-warning label-pill">
+                                {{repository.stargazers_count}}
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </section>
             <section name="contributing" id="contributing" class="content-section">
                 <h2><a href="#contributing">Contributing</a></h2>
@@ -197,40 +194,53 @@
                             follow the procedure below:
                         </p>
 
-                        <p>
-                            First, conform your project to our standard:
-                        </p>
-                    <pre class="code code-shell">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p>
+                                    First, <strong>conform your project</strong> to our standard.
+                                </p>
+
+
+                            </div>
+                            <div class="col-lg-8">
+                                <pre class="code code-shell">
 $ cd /path/to/your/repository      # Navigate to your repository.
 $ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
 $ mv !(.git) projects/{project_name}/  # Move everything to the created folder.
 $ git add .
 $ git commit -m "Conform project for Comp-UFSCar merging."
 $ git push --all</pre>
+                            </div>
+                        </div>
                         <p class="alert alert-warning">
-                            <strong>Caution!</strong> Please make sure that the <code>{project_name}</code> choosen
-                            isn't
-                            already being
-                            used by other project in the
-                            given class' repository.
-                        </p>
-
-                        <p>
-                            Now merge your project and the class repository:
-                        </p>
-                    <pre class="code code-shell">
+                                    <strong>Caution!</strong> Please make sure that the
+                                    <code>{project_name}</code> chosen isn't already being
+                                    used by other project in the given class' repository.
+                                </p>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <pre class="code code-shell">
 $ cd /path/to/comp-ufscar/class/repository
 $ git remote add {repository} https://github.com/{username}/{repository}.git
 $ git pull --all
 $ git remote remove {repository}
 $ git push --all</pre>
-                        <p>
-                            The sequence of steps above is recommended as it will merge the list of commits while
-                            preserving
-                            paths.
-                            Other solutions might be found at <a href="http://stackoverflow.com/questions/1425892">
-                            How do you merge two git repository? (Stack Overflow)</a>
-                        </p>
+                            </div>
+                            <div class="col-lg-4">
+                                <p>
+                                    Now <strong>merge your project</strong>
+                                    and the class repository.
+                                </p>
+
+                                <p>
+                                    This procedure is recommended as it will merge the
+                                    list of commits while preserving paths.
+                                    Other options might be found at
+                                    <a href="http://stackoverflow.com/questions/1425892">
+                                        How do you merge two git repository? (Stack Overflow)</a>.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

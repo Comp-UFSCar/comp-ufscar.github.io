@@ -13,6 +13,10 @@ function RepositoriesController($resource, config) {
     vm.load = function () {
         console.log('Loading repositories...');
 
-        vm.repositories = Repositories.query();
+        vm.repositories = Repositories.query(function () {
+            for (var repository of vm.repositories) {
+                repository.pushed_at = new Date(repository.pushed_at);
+            }
+        });
     }
 }
