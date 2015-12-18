@@ -15,6 +15,7 @@ function RepositoriesController($resource, config) {
 
         vm.repositories = Repositories.query(function () {
             for (var repository of vm.repositories) {
+                repository.created_at = new Date(repository.created_at);
                 repository.pushed_at = new Date(repository.pushed_at);
             }
         });

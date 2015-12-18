@@ -1,9 +1,11 @@
 body {
+    text-rendering: geometricPrecision;
     overflow-x: hidden;
-    font-family: Arial, sans-serif;
-    letter-spacing: 0.01em;
-    font-size: 1em;
-    color: #555;
+    font-family: "Merriweather", serif;
+    letter-spacing: 0.01rem;
+    font-size: 1.1rem;
+    line-height: 1.5em;
+    color: #5C6367;
 }
 
 .alert {
@@ -18,6 +20,7 @@ body {
 }
 
 .content-section h1 {
+    font-weight: bold;
     margin-top: 2em;
     border-bottom: 1px solid #f0f0ff;
     padding-bottom: .05em;
@@ -28,21 +31,23 @@ body {
 }
 
 .content-section h2 {
+    font-weight: bold;
     margin-top: 2em;
     border-bottom: 1px solid #f0f0ff;
     padding-bottom: .05em;
 }
 
 .content-section h3 {
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 
 .code {
-    font-family: "Ubuntu Beta", "Bitstream Vera Sans", DejaVu Sans, Tahoma, sans-serif;
-    background-color: #333;
-    color: #fff;
+    font-family: "Merriweather", serif;
+    background-color: #F7FAFB;
+    color: #333;
     padding: 1em;
-    border-radius: 5px;
+    border-radius: 2px;
+    border: 2px solid #ededed;
     font-size: 14px;
 }
 

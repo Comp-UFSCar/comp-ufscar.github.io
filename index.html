@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Comp UFSCar</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
     <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/wrapper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -23,22 +24,22 @@
             <ul class="nav nav-pills nav-stacked">
                 <a href="#tr" title="Introduction">
                     <li class="nav-item">
-                        <i class="fa fa-home fa-2x"></i>
+                        <i class="fa fa-home"></i>
                     </li>
                 </a>
                 <a href="#members" title="Members">
                     <li class="nav-item">
-                        <i class="fa fa-users fa-2x"></i>
+                        <i class="fa fa-users"></i>
                     </li>
                 </a>
                 <a href="#repos" title="Repositories">
                     <li class="nav-item">
-                        <i class="fa fa-space-shuttle fa-2x"></i>
+                        <i class="fa fa-space-shuttle"></i>
                     </li>
                 </a>
                 <a href="#contributing" title="Contributing">
                     <li class="nav-item">
-                        <i class="fa fa-share-alt fa-2x"></i>
+                        <i class="fa fa-share-alt"></i>
                     </li>
                 </a>
             </ul>
@@ -111,6 +112,7 @@
                     <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Created</th>
                         <th>Last Pushed</th>
                         <th>Stats</th>
                     </tr>
@@ -123,6 +125,9 @@
                             </a>
                             <br/>
                             <small>{{ repository.description }}</small>
+                        </td>
+                        <td>
+                            <small>{{repository.created_at.toLocaleDateString()}}</small>
                         </td>
                         <td>
                             <small>{{repository.pushed_at.toLocaleDateString()}}</small>
@@ -194,53 +199,42 @@
                             follow the procedure below:
                         </p>
 
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <p>
-                                    First, <strong>conform your project</strong> to our standard.
-                                </p>
+                        <p>
+                            First, <strong>conform your project</strong> to our standard:
+                        </p>
 
-
-                            </div>
-                            <div class="col-lg-8">
-                                <pre class="code code-shell">
+                        <pre class="code code-shell">
 $ cd /path/to/your/repository      # Navigate to your repository.
 $ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
 $ mv !(.git) projects/{project_name}/  # Move everything to the created folder.
 $ git add .
 $ git commit -m "Conform project for Comp-UFSCar merging."
 $ git push --all</pre>
-                            </div>
-                        </div>
                         <p class="alert alert-warning">
                                     <strong>Caution!</strong> Please make sure that the
                                     <code>{project_name}</code> chosen isn't already being
                                     used by other project in the given class' repository.
-                                </p>
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <pre class="code code-shell">
+                        </p>
+
+                        <p>
+                            Now <strong>merge your project</strong>
+                            and the class repository.
+                        </p>
+                        <pre class="code code-shell">
 $ cd /path/to/comp-ufscar/class/repository
 $ git remote add {repository} https://github.com/{username}/{repository}.git
 $ git pull --all
 $ git remote remove {repository}
 $ git push --all</pre>
-                            </div>
-                            <div class="col-lg-4">
-                                <p>
-                                    Now <strong>merge your project</strong>
-                                    and the class repository.
-                                </p>
 
-                                <p>
-                                    This procedure is recommended as it will merge the
-                                    list of commits while preserving paths.
-                                    Other options might be found at
-                                    <a href="http://stackoverflow.com/questions/1425892">
-                                        How do you merge two git repository? (Stack Overflow)</a>.
-                                </p>
-                            </div>
-                        </div>
+
+                        <p>
+                            This procedure is recommended as it will merge the
+                            list of commits while preserving paths.
+                            Other options might be found at
+                            <a href="http://stackoverflow.com/questions/1425892">
+                                How do you merge two git repository? (Stack Overflow)</a>.
+                        </p>
                     </div>
                 </div>
             </section>
