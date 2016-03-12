@@ -198,10 +198,12 @@
                         </p>
 
                         <pre class="code code-shell">
-$ cd /path/to/your/repository      # Navigate to your repository.
+
+$ cd /path/to/your/repository
+$ git checkout -b comp-ufscar-merging
 $ mkdir projects/{project_name} -p # Create the folders projects and projects/{project_name}.
 $ mv !(.git) projects/{project_name}/  # Move everything to the created folder.
-$ git add .
+$ git add . --all
 $ git commit -m "Conform project for Comp-UFSCar merging."
 $ git push --all</pre>
                         <p class="alert alert-warning">
@@ -217,10 +219,10 @@ $ git push --all</pre>
                         <pre class="code code-shell">
 $ cd /path/to/comp-ufscar/class/repository
 $ git remote add {repository} https://github.com/{username}/{repository}.git
-$ git pull --all
+$ git fetch {repository}
+$ git merge {repository}/comp-ufscar-merging
 $ git remote remove {repository}
-$ git push --all</pre>
-
+$ git push</pre>
 
                         <p>
                             This procedure is recommended as it will merge the
